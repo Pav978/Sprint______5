@@ -4,12 +4,13 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from conftest import driver
 from locators import Locators
+from constants import Constants
 
 
 class Test_Authorization:
     def test_authorization(self, driver):
 #Заходим на страницу бургерной
-        driver.get("https://stellarburgers.nomoreparties.site/")
+        driver.get(Constants.URL)
 #Переход в ЛК
         driver.find_element(*Locators.BUTTON_PERSONAL).click()
 #Переход к регистрации
@@ -24,8 +25,8 @@ class Test_Authorization:
         driver.find_element(*Locators.INPUT_PASSWORD).send_keys(random_pass)
 #Нажимаем зарегистрироваться
         driver.find_element(*Locators.BUTTON_REGISTRATION).click()
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, "//p[contains(text(), 'Некорректный пароль')]")))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((Locators.INC_PASSWORD)))
 #Проверка правильности пароля
-        error_message = WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, "//p[contains(text(), 'Некорректный пароль')]")))
+        error_message = WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((Locators.INC_PASSWORD)))
         assert error_message.is_displayed()
 
