@@ -27,6 +27,7 @@ class Locators:
     ELEMENT_ACCOUNT = By.CSS_SELECTOR, ".Account_link__2ETsJ.text.text_type_main-medium.text_color_inactive.Account_link_active__2opc9"
     ELEMENT_EX = By.XPATH, "//h2[text()='Вход']"
     ELEMENT_BURGER = By.XPATH, "//h1[text()='Соберите бургер']"
+    BUTTON_EX = By.XPATH, "//button[contains(text(), 'Войти')]"
 
 class Test_burger_constructor:
 
